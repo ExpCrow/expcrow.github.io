@@ -6,33 +6,54 @@
   <title>ExpCrow | Independent Game Studio</title>
   <meta name="description" content="ExpCrow is an independent studio building story-driven games for mobile players around the world.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  
+
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="logo-frame" role="img" aria-label="ExpCrow logo placeholder">
-         <img src="images/Logo.png" alt="YourStudio logo">
-      </div>
-      <nav class="header-nav" aria-label="Primary">
-        <a href="#intro">Studio</a>
-        <a href="#games">Games</a>
-        <a href="#contact">Contact</a>
-      </nav>
+ <header class="site-header">
+  <div class="container header-inner">
+    <div class="logo-frame">
+      <img src="images/Logo.png" alt="ExpCrow logo" class="site-logo">
     </div>
-  </header>
+
+   <nav class="header-nav" aria-label="Primary">
+  <a href="#intro" data-tr="Stüdyo" data-en="Studio">Studio</a>
+  <a href="#games" data-tr="Oyunlar" data-en="Games">Games</a>
+  <a href="#contact" data-tr="İletişim" data-en="Contact">Contact</a>
+
+  <div class="lang-menu">
+    <button class="lang-icon" aria-label="Change language">
+     <i class="fa-solid fa-language"></i>
+    </button>
+    <div class="lang-dropdown">
+      <button data-lang="en">English</button>
+      <button data-lang="tr">Türkçe</button>
+    </div>
+  </div>
+</nav>
+  </div>
+</header>
 
   <main>
     <section class="intro" id="intro">
       <div class="container intro-content">
-        <p class="eyebrow">Independent Game Studio</p>
-        <h1>We turn bold ideas into meaningful play.</h1>
-        <p class="lead">ExpCrow crafts narrative-rich experiences for players who love to explore new worlds. We prototype quickly, listen to our community, and polish every build until it feels unforgettable.</p>
+        <p class="eyebrow" data-tr="Bağımsız Oyun Stüdyosu" data-en="Independent Game Studio">Independent Game Studio</p>
+        <h1 data-tr="Cesur fikirleri unutulmaz oyunlara dönüştürüyoruz."
+            data-en="We turn bold ideas into meaningful play.">
+          We turn bold ideas into meaningful play.
+        </h1>
+        <p class="lead"
+           data-tr="ExpCrow, oyuncuların yeni dünyalar keşfetmesini sağlayan hikaye odaklı oyunlar üretir. Hızlı prototipleme yapar, topluluğumuzu dinler ve her yapımı unutulmaz hale getirene kadar cilalarız."
+           data-en="ExpCrow crafts narrative-rich experiences for players who love to explore new worlds. We prototype quickly, listen to our community, and polish every build until it feels unforgettable.">
+          ExpCrow crafts narrative-rich experiences for players who love to explore new worlds. We prototype quickly, listen to our community, and polish every build until it feels unforgettable.
+        </p>
         <div class="cta-group">
-          <a class="button primary" href="#games">Discover our games</a>
-          <a class="button ghost" href="mailto:expcrowgame@gmail.com">Contact us</a>
+          <a class="button primary" href="#games" data-tr="Oyunlarımızı Keşfet" data-en="Discover our games">Discover our games</a>
+          <a class="button ghost" href="mailto:expcrowgame@gmail.com" data-tr="Bize Ulaşın" data-en="Contact us">Contact us</a>
         </div>
       </div>
     </section>
@@ -40,50 +61,26 @@
     <section class="games" id="games">
       <div class="container">
         <div class="section-heading">
-          <p class="eyebrow">Featured titles</p>
-          <h2>Games built for curious minds</h2>
-          <p class="section-intro">Each project blends storytelling, atmosphere, and accessible mechanics. Replace the store links below with your live Android and iOS listings when you are ready to launch.</p>
+          <p class="eyebrow" data-tr="Öne çıkan oyunlar" data-en="Featured titles">Featured titles</p>
+          <h2 data-tr="Meraklı zihinler için oyunlar" data-en="Games built for curious minds">Games built for curious minds</h2>
+          <p class="section-intro"
+             data-tr="Her proje hikaye anlatımı, atmosfer ve erişilebilir oynanışı bir araya getirir. Aşağıdaki bağlantıları, oyunlarınız yayınlandığında kendi Android ve iOS mağaza linklerinizle değiştirin."
+             data-en="Each project blends storytelling, atmosphere, and accessible mechanics. Replace the store links below with your live Android and iOS listings when you are ready to launch.">
+            Each project blends storytelling, atmosphere, and accessible mechanics. Replace the store links below with your live Android and iOS listings when you are ready to launch.
+          </p>
         </div>
 
         <div class="game-grid">
           <article class="game-card">
             <div class="game-thumb">
-              <!-- Replace the src value with your Veil of Echoes logo path -->
-              <img src="images/veil-of-echoes-logo.svg" alt="Veil of Echoes logo">
+              <img src="images/WordSagaCrossword.png" alt="WordSaga: Crossword logo">
             </div>
             <div class="game-body">
-              <h3>Veil of Echoes</h3>
-              <p>Traverse forgotten catacombs, unravel a cosmic mystery, and master rhythmic combat in this atmospheric adventure.</p>
-            </div>
-            <div class="store-links">
-              <a href="https://play.google.com/store" target="_blank" rel="noopener">Android</a>
-              <a href="https://apps.apple.com/us/genre/ios-games/id6014" target="_blank" rel="noopener">iOS</a>
-            </div>
-          </article>
-
-          <article class="game-card">
-            <div class="game-thumb">
-              <!-- Replace the src value with your Aether Bloom logo path -->
-              <img src="images/aether-bloom-logo.svg" alt="Aether Bloom logo">
-            </div>
-            <div class="game-body">
-              <h3>Aether Bloom</h3>
-              <p>Design floating sanctuaries, collaborate with friends, and adapt to seasonal challenges in a living strategy world.</p>
-            </div>
-            <div class="store-links">
-              <a href="https://play.google.com/store" target="_blank" rel="noopener">Android</a>
-              <a href="https://apps.apple.com/us/genre/ios-games/id6014" target="_blank" rel="noopener">iOS</a>
-            </div>
-          </article>
-
-          <article class="game-card">
-            <div class="game-thumb">
-              <!-- Replace the src value with your Signal Dunes logo path -->
-              <img src="images/signal-dunes-logo.svg" alt="Signal Dunes logo">
-            </div>
-            <div class="game-body">
-              <h3>Signal Dunes</h3>
-              <p>Decode alien radio waves, survive against shifting sands, and rebuild a lost civilization one signal at a time.</p>
+              <h3 data-tr="WordSaga: Crossword" data-en="WordSaga: Crossword">WordSaga: Crossword</h3>
+              <p data-tr="Zihnini dinlendir, kelime dağarcığını zorla! Bulmacaları çöz, odanı dekore et ve WordSaga hikayesini keşfet."
+                 data-en="Relax your mind and challenge your vocabulary! Solve crossword puzzles, decorate rooms, and uncover the story of WordSaga.">
+                Relax your mind and challenge your vocabulary! Solve crossword puzzles, decorate rooms, and uncover the story of WordSaga.
+              </p>
             </div>
             <div class="store-links">
               <a href="https://play.google.com/store" target="_blank" rel="noopener">Android</a>
@@ -96,8 +93,13 @@
 
     <section class="contact" id="contact">
       <div class="container contact-card">
-        <h2>Let's build something memorable together.</h2>
-        <p>We partner with publishers, artists, and collaborators who share our love for immersive play. Reach out and let's talk about your next idea.</p>
+        <h2 data-tr="Birlikte unutulmaz bir şey inşa edelim." data-en="Let's build something memorable together.">
+          Let's build something memorable together.
+        </h2>
+        <p data-tr="Yayıncılar, sanatçılar ve oyun tutkunu iş ortaklarıyla çalışıyoruz. Fikrini bizimle paylaş, birlikte hayata geçirelim!"
+           data-en="We partner with publishers, artists, and collaborators who share our love for immersive play. Reach out and let's talk about your next idea.">
+          We partner with publishers, artists, and collaborators who share our love for immersive play. Reach out and let's talk about your next idea.
+        </p>
         <a class="button primary" href="mailto:expcrowgame@gmail.com">expcrowgame@gmail.com</a>
       </div>
     </section>
@@ -107,7 +109,7 @@
     <div class="container footer-inner">
       <span>© <span id="year"></span> ExpCrow Game Studio. All rights reserved.</span>
       <div class="footer-links">
-        <a href="PrivacyPolicy.html">Privacy Policy</a>
+        <a href="PrivacyPolicy.html" data-tr="Gizlilik Politikası" data-en="Privacy Policy">Privacy Policy</a>
         <a href="app-ads.txt">app-ads.txt</a>
       </div>
     </div>
