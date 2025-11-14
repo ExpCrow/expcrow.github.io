@@ -1,0 +1,42 @@
+[
+    {
+        "name": "WordSaga: Crossword",
+        "slug": "WordSagaCrossword",
+        "ios": "https://apps.apple.com/app/wordsaga-crossword/id123456",
+        "android": "https://play.google.com/store/apps/details?id=com.expcrow.crossword",
+        "description": {
+            "en": "Relax your mind and challenge your vocabulary! Solve crossword puzzles, decorate rooms, and uncover the story of WordSaga.",
+            "tr": "Zihnini dinlendir, kelime dağarcığını zorla! Bulmacaları çöz, odanı dekore et ve WordSaga hikayesini keşfet."
+        }
+    },
+    {
+        "name": "WordSaga: Anagram",
+        "slug": "WordSagaAnagram",
+        "ios": "https://apps.apple.com/app/wordsaga-word-connect/id987654",
+        "android": "https://play.google.com/store/apps/details?id=com.expcrow.wordconnect",
+        "description": {
+            "en": "Connect letters and discover hidden words.",
+            "tr": "Harfleri birleştir ve gizli kelimeleri bul."
+        }
+    },
+    {
+        "name": "Logo",
+        "slug": "Logo",
+        "ios": "https://apps.apple.com/app/wordsaga-word-connect/id987654",
+        "android": "https://play.google.com/store/apps/details?id=com.expcrow.wordconnect",
+        "description": {
+            "en": "Logo Test",
+            "tr": "Logo Test"
+        }
+    },
+    {
+        "name": "Battle",
+        "slug": "Battle",
+        "ios": "https://apps.apple.com/app/wordsaga-word-connect/id987654",
+        "android": "https://play.google.com/store/apps/details?id=com.expcrow.wordconnect",
+        "description": {
+            "en": "Battle Test",
+            "tr": "Battle Test Ediyoruz"
+        }
+    }
+]

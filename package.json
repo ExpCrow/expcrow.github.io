@@ -1,0 +1,7 @@
+{
+  "name": "expcrow-site",
+  "version": "1.0.0",
+  "scripts": {
+    "generate": "node tools/generate.js"
+  }
+}
