@@ -283,7 +283,12 @@ h1 {
         <a href="https://apps.apple.com/app/wordsaga-crossword/id123456" target="_blank" class="store-btn ios">iOS</a>
     </div>
 
-    <a href="../index.html" class="back-btn">Back</a>
+   <a href="../index.html"
+   class="back-btn"
+   data-en="Back"
+   data-tr="Geri Dön">
+   Back
+</a>
 </div>
 
 <script src="../js/script.js"></script>
@@ -291,65 +296,75 @@ h1 {
     <span class="lightbox-close" id="lightboxClose">×</span>
     <img id="lightboxImage" src="">
 </div>
-<script src="../js/script.js"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-      const menu = document.querySelector(".detail-lang-menu");
+    /* ======================================================
+       🔥 1) DİL MENÜSÜ
+    ====================================================== */
+    const menu = document.querySelector(".detail-lang-menu");
     const icon = document.querySelector(".detail-lang-icon");
     const options = document.querySelectorAll(".detail-lang-dropdown button");
 
-    // Menü aç/kapa
-    icon.addEventListener("click", (e) => {
-        e.stopPropagation();
-        menu.classList.toggle("open");
-    });
+    if (icon && menu) {
+        // Menü aç/kapa
+        icon.addEventListener("click", (e) => {
+            e.stopPropagation();
+            menu.classList.toggle("open");
+        });
 
-    document.addEventListener("click", () => {
-        menu.classList.remove("open");
-    });
-
-    // Dil seçimi
-    options.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const lang = btn.dataset.lang;
-            localStorage.setItem("lang", lang);
-            applyTranslations(lang);  
+        document.addEventListener("click", () => {
             menu.classList.remove("open");
         });
-    });
 
-    // Sayfa yüklenince dil
-    const saved = localStorage.getItem("lang") || "en";
-    applyTranslations(saved);
+        // Dil seçimi
+        options.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const lang = btn.dataset.lang;
+                localStorage.setItem("lang", lang);
+                applyTranslations(lang);  
+                menu.classList.remove("open");
+            });
+        });
+
+        // Başlangıç dili
+        const savedLang = localStorage.getItem("lang") || "en";
+        applyTranslations(savedLang);
+    }
+
 
     /* ======================================================
-       🔥 2) LIGHTBOX GÖRSEL BÜYÜTME
+       🔥 2) LIGHTBOX
     ====================================================== */
-
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightboxImage");
     const closeBtn = document.getElementById("lightboxClose");
+    const galleryImages = document.querySelectorAll(".gallery img");
 
-    document.querySelectorAll(".gallery img").forEach(img => {
-        img.addEventListener("click", () => {
-            lightbox.style.display = "flex";
-            lightboxImg.src = img.src;
+    if (lightbox && galleryImages.length > 0) {
+
+        galleryImages.forEach(img => {
+            img.addEventListener("click", () => {
+                lightbox.style.display = "flex";
+                lightboxImg.src = img.src;
+            });
         });
-    });
 
-    closeBtn.addEventListener("click", () => {
-        lightbox.style.display = "none";
-    });
-
-    lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) {
-            lightbox.style.display = "none";
+        if (closeBtn) {
+            closeBtn.addEventListener("click", () => {
+                lightbox.style.display = "none";
+            });
         }
-    });
+
+        lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = "none";
+            }
+        });
+    }
 
 });
 </script>
-
 </body>
 </html>
