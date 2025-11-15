@@ -8,7 +8,7 @@
 
 <title>WordSaga: Crossword – ExpCrow</title>
 <meta name="description" content="Relax your mind and challenge your vocabulary! Solve crossword puzzles, decorate rooms, and uncover the story of WordSaga."/>
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="../css/style.css"/>
 
 <style>
@@ -150,8 +150,73 @@ h1 {
     font-weight: bold;
     text-shadow: 0 0 10px black;
 }
+.lang-menu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
 
-@keyframes fadeIn {
+.lang-icon {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text, #fff);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.lang-icon i {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  background: none !important;
+  color: inherit;
+}
+
+.lang-icon:hover {
+  transform: scale(1.1);
+  color: var(--accent, #5d7bff);
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: 140%;
+  right: 0;
+  background: rgba(0,0,0,0.75);
+  border-radius: 10px;
+  padding: 6px 0;
+  display: none;
+  flex-direction: column;
+  min-width: 120px;
+  backdrop-filter: blur(10px);
+}
+
+.lang-dropdown button {
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.lang-dropdown button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.lang-menu.open .lang-dropdown {
+  display: flex;
+}
+/* Menü açıldığında */
+.detail-lang-menu.open .detail-lang-dropdown {
+  display: flex;
+}@keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
@@ -178,8 +243,17 @@ h1 {
 <body>
 
 <div class="details-wrapper">
+<div class="lang-menu">
+    <button class="lang-icon" aria-label="Change language">
+        <i class="fa-solid fa-language"></i>
+    </button>
 
-    <div class="game-thumb-large">
+    <div class="lang-dropdown">
+        <button data-lang="en">English</button>
+        <button data-lang="tr">Türkçe</button>
+    </div>
+</div>
+   <div class="game-thumb-large">
         <img src="../images/WordSagaCrossword.png" alt="WordSaga: Crossword">
     </div>
 
@@ -217,9 +291,41 @@ h1 {
     <span class="lightbox-close" id="lightboxClose">×</span>
     <img id="lightboxImage" src="">
 </div>
-
+<script src="../js/script.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+
+      const menu = document.querySelector(".detail-lang-menu");
+    const icon = document.querySelector(".detail-lang-icon");
+    const options = document.querySelectorAll(".detail-lang-dropdown button");
+
+    // Menü aç/kapa
+    icon.addEventListener("click", (e) => {
+        e.stopPropagation();
+        menu.classList.toggle("open");
+    });
+
+    document.addEventListener("click", () => {
+        menu.classList.remove("open");
+    });
+
+    // Dil seçimi
+    options.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const lang = btn.dataset.lang;
+            localStorage.setItem("lang", lang);
+            applyTranslations(lang);  
+            menu.classList.remove("open");
+        });
+    });
+
+    // Sayfa yüklenince dil
+    const saved = localStorage.getItem("lang") || "en";
+    applyTranslations(saved);
+
+    /* ======================================================
+       🔥 2) LIGHTBOX GÖRSEL BÜYÜTME
+    ====================================================== */
 
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightboxImage");
@@ -244,7 +350,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
-
 
 </body>
 </html>

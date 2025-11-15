@@ -1,5 +1,2 @@
 npm run generate
 
-
-===
-
