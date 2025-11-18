@@ -188,7 +188,8 @@ h1 {
 }
 .store-btn.android { background: #3ddc84; }
 .store-btn.ios { background: #007aff; }
-
+.store-btn.blog-btn { background: #ff9f43; }
+.store-btn.steam { background: #00b7ff; }
 /* Back Button */
 .back-btn {
     display: block;
@@ -294,10 +295,37 @@ h1 {
 .lang-menu.open .lang-dropdown {
   display: flex;
 }
+
+.top-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Geri Butonu (aynı kalsın, daha küçük) */
+.back-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+
 /* Menü açıldığında */
 .detail-lang-menu.open .detail-lang-dropdown {
   display: flex;
-}@keyframes fadeIn {
+}
+
+@keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
@@ -315,7 +343,18 @@ h1 {
     .gallery img {
         height: 110px;
     }
+.store-buttons {
+        gap: 8px;                 /* boşluk küçülür */
+        margin: 22px 0;           /* üst-alt alan daralır */
+    }
+
+    .store-btn {
+        padding: 8px 14px;        /* buton küçülür */
+        font-size: 13px;          /* yazı küçülür */
+        border-radius: 10px;      /* daha kompakt görünür */
+    }
 }
+
 
 </style>
 
@@ -349,16 +388,24 @@ h1 {
     ${galleryHTML}
 
     <div class="store-buttons">
+    ${game.android && game.android.trim() !== "" ? `
         <a href="${game.android}" target="_blank" class="store-btn android">Android</a>
-        <a href="${game.ios}" target="_blank" class="store-btn ios">iOS</a>
-    </div>
+    ` : ""}
 
-   <a href="../index.html"
-   class="back-btn"
-   data-en="Back"
-   data-tr="Geri Dön">
-   Back
-</a>
+    ${game.ios && game.ios.trim() !== "" ? `
+        <a href="${game.ios}" target="_blank" class="store-btn ios">iOS</a>
+    ` : ""}
+
+    ${game.steam && game.steam.trim() !== "" ? `
+        <a href="${game.steam}" target="_blank" class="store-btn steam">Steam</a>
+    ` : ""}
+    
+    <a id="blogBtn" class="store-btn blog-btn">Blog</a>
+</div>
+
+<div class="top-buttons">
+    <a href="../index.html" class="back-btn">Back</a>
+</div>
 </div>
 
 <script src="../js/script.js"></script>
@@ -435,6 +482,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const blogBtn = document.getElementById("blogBtn");
+
+    if (blogBtn) {
+        blogBtn.addEventListener("click", () => {
+            const lang = localStorage.getItem("lang") || "en";
+
+            if (lang === "tr") {
+                window.location.href = "./tr/blog/index.html";
+            } else {
+                window.location.href = "./en/blog/index.html";
+            }
+        });
+    }
+});
+
 </script>
 </body>
 </html>
@@ -480,9 +543,18 @@ function injectCardsIntoIndex() {
             </div>
 
             <div class="store-links">
-                <a href="${game.android}" target="_blank">Android</a>
-                <a href="${game.ios}" target="_blank">iOS</a>
-            </div>
+    ${game.android && game.android.trim() !== "" ? `
+        <a href="${game.android}" target="_blank">Android</a>
+    ` : ""}
+
+    ${game.ios && game.ios.trim() !== "" ? `
+        <a href="${game.ios}" target="_blank">iOS</a>
+    ` : ""}
+
+    ${game.steam && game.steam.trim() !== "" ? `
+        <a href="${game.steam}" target="_blank">Steam</a>
+    ` : ""}
+</div>
 
            <a class="seo-page-link"
    href="./${game.slug}/"

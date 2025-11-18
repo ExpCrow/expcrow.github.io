@@ -371,6 +371,53 @@ a:focus {
 .lang-menu.open .lang-dropdown {
   display: flex;
 }
+
+/* ============================
+   Minimal Breadcrumb
+   ============================ */
+
+.breadcrumb {
+    margin: 8px auto 20px;
+    max-width: 900px;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    font-size: 14px;
+    color: #bfc5d8; /* açık gri */
+}
+
+.breadcrumb a {
+    color: #d9def0; /* daha açık */
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #ffffff; /* hover’da beyaza yaklaşır */
+}
+
+.breadcrumb .sep {
+    color: #8d95a8; /* ok rengi */
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.breadcrumb .current {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 480px) {
+   .breadcrumb {
+        font-size: 13px;
+        gap: 4px;
+    }
+}
+
 @media (max-width: 720px) {
   .header-inner {
     flex-direction: row;

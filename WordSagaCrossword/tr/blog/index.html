@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Blog | WordSaga Crossword</title>
+<meta name="description" content="WordSaga Crossword için Türkçe blog yazıları, duyurular ve geliştirme güncellemeleri.">
+
+    <!-- Ana tema CSS -->
+    <link rel="stylesheet" href="../../../css/style.css" />
+     <link rel="stylesheet" href="../../../css/blog.css" />
+    <!-- Dil ikonu için (ana sayfada da kullanıyorsan zaten yüklüdür, yoksa ekle) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    
+</head>
+
+<body>
+<nav class="breadcrumb" >
+   <a href="../../../index.html">Ana Sayfa</a>
+<span>›</span>
+<a href="../../index.html">WordSaga Crossword</a>
+<span>›</span>
+<span class="current">Blog</span>
+</nav>
+
+<!-- DİL MENÜSÜ (SADECE HTML, YÖNLENDİRMEYİ LİNK YAPIYOR) -->
+<div class="lang-menu">
+    <div class="lang-icon">
+        <i class="fa-solid fa-language"></i>
+    </div>
+   <div class="lang-dropdown">
+    <a href="../../tr/blog/index.html">Türkçe</a>
+    <a href="../../en/blog/index.html">English</a>
+</div>
+</div>
+
+<div class="container blog-page">
+
+    <h1 class="blog-title">WordSaga Crossword – Blog</h1>
+
+    <div class="blog-grid">
+
+        <!-- BLOG POST 1 -->
+       <a class="blog-card" href="posts/crossword-nedir-nasil-cozulur.html">
+    <div class="blog-thumb">
+        <img src="../../../images/blog/CrossWord.jpg" 
+             alt="Crossword çapraz bulmaca nedir ve nasıl çözülür?">
+    </div>
+    <div class="blog-body">
+        <h3>Crossword (Çapraz Bulmaca) Nedir? Nasıl Çözülür?</h3>
+        <p>Crossword yani çapraz bulmacanın ne olduğu, nasıl çözüldüğü ve yeni başlayanlara özel stratejiler.</p>
+        <span class="blog-read-more">Devamını oku →</span>
+    </div>
+    </a>
+
+        
+
+    </div>
+
+</div>
+<button id="scrollTopBtn" class="scroll-top-btn">
+    ↑
+</button>
+<!-- Ana script (sadece dropdown aç/kapa için lazım) -->
+<script src="../../../js/script.js"></script>
+<script>
+const scrollBtn = document.getElementById("scrollTopBtn");
+
+// Ne zaman gözüksün?
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) scrollBtn.style.display = "flex";
+    else scrollBtn.style.display = "none";
+});
+
+// Tıklayınca yukarı çık
+scrollBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+</script>
+</body>
+</html>
