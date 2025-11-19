@@ -357,7 +357,15 @@ h1 {
 
 
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FT4BZF0FBN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-FT4BZF0FBN');
+</script>
 </head>
 
 <body>
@@ -499,6 +507,27 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
+
+  <footer class="site-footer">
+  <div class="container footer-inner">
+    
+       <span>© <span id="year"></span> 
+      <a href="/index.html" class="footer-brand">ExpCrow Game Studio</a>. 
+      All rights reserved.
+    </span>
+
+    <div class="footer-links">
+      <a href="/PrivacyPolicy.html" data-tr="Gizlilik Politikası" data-en="Privacy Policy">Privacy Policy</a>
+      <a href="/app-ads.txt">app-ads.txt</a>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
 `;

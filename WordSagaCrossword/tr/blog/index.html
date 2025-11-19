@@ -7,15 +7,27 @@
 <meta name="description" content="WordSaga Crossword için Türkçe blog yazıları, duyurular ve geliştirme güncellemeleri.">
 
     <!-- Ana tema CSS -->
-    <link rel="stylesheet" href="../../../css/style.css" />
-     <link rel="stylesheet" href="../../../css/blog.css" />
+    <link rel="stylesheet" href="../../../css/style.css?v=1" />
+     <link rel="stylesheet" href="../../../css/blog.css?v=1" />
+
     <!-- Dil ikonu için (ana sayfada da kullanıyorsan zaten yüklüdür, yoksa ekle) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FT4BZF0FBN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FT4BZF0FBN');
+</script>
 </head>
 
 <body>
+
+<div class="blog-layout"> 
+
 <nav class="breadcrumb" >
    <a href="../../../index.html">Ana Sayfa</a>
 <span>›</span>
@@ -37,7 +49,7 @@
 
 <div class="container blog-page">
 
-    <h1 class="blog-title">WordSaga Crossword – Blog</h1>
+    <h1 class=" blog-title">WordSaga Crossword – Blog</h1>
 
     <div class="blog-grid">
 
@@ -62,6 +74,26 @@
 <button id="scrollTopBtn" class="scroll-top-btn">
     ↑
 </button>
+
+ <footer class="site-footer">
+  <div class="container footer-inner">
+    
+   <span>© <span id="year"></span> 
+      <a href="/index.html" class="footer-brand">ExpCrow Game Studio</a>. 
+      All rights reserved.
+    </span>
+
+    <div class="footer-links">
+      <a href="/PrivacyPolicy.html" data-tr="Gizlilik Politikası" data-en="Privacy Policy">Privacy Policy</a>
+      <a href="/app-ads.txt">app-ads.txt</a>
+    </div>
+
+  </div>
+</footer>
+
+</div>
+
+
 <!-- Ana script (sadece dropdown aç/kapa için lazım) -->
 <script src="../../../js/script.js"></script>
 <script>
@@ -77,6 +109,11 @@ window.addEventListener("scroll", () => {
 scrollBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 });
+</script>
+
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>

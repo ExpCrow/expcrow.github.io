@@ -276,27 +276,6 @@ a:focus {
   margin-bottom: 28px;
 }
 
-/* Footer */
-.site-footer {
-  border-top: 1px solid var(--border);
-  background: rgba(8, 11, 20, 0.9);
-  padding: 24px 0 32px;
-  color: var(--text-dim);
-  font-size: 0.9rem;
-}
-
-.footer-inner {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.footer-links {
-  display: flex;
-  gap: 16px;
-}
 
 /*  Dil menüsü - Contact'ın hemen yanında */
 .lang-menu {
@@ -408,6 +387,39 @@ a:focus {
 .breadcrumb .current {
     color: #ffffff;
     font-weight: 600;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: rgba(8, 11, 20, 0.9);
+  padding: 24px 0 32px;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-links {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-brand {
+    color: var(--accent);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.footer-brand:hover {
+    opacity: 0.85;
 }
 
 /* Mobil uyumluluk */

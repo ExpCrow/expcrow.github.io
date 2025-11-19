@@ -1,5 +1,18 @@
-        .blog-page {
-            padding: 60px 0 80px;
+      .blog-layout {
+    min-height: 100vh;          /* ekran yüksekliğini doldursun */
+    display: flex;
+    flex-direction: column;     /* üst üste diz: breadcrumb, içerik, footer */
+}
+
+/* Footer’ı bu layout içinde en alta it */
+.blog-layout .site-footer {
+    margin-top: auto;
+}
+
+  .blog-page {
+            max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 0 80px;
         }
 
         .blog-title {
@@ -9,10 +22,10 @@ margin-top: 32px;
         }
 
         .blog-grid {
-                display: flex;
-    flex-wrap: wrap;
+               display: grid;
     gap: 28px;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 420px));
+    justify-content: center; /* ← SİHİRLİ DOKUNUŞ */
         }
 
         .blog-card {
