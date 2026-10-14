@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Ring Puzzle – ExpCrow</title>
+<meta name="description" content="Ring Puzzle is a minimalist yet challenging puzzle game that tests your logic and focus by rotating interlocking rings."/>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css?v=1"/>
+
+<style>
+body {
+    background: linear-gradient(135deg, #0b0f19, #1c2333);
+    color: white;
+    font-family: "Poppins", sans-serif;
+    background-size: cover;
+}
+
+.details-wrapper {
+    max-width: 760px;
+    width: 90%;
+    margin: 40px auto;
+    padding: 22px 26px;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow: 0 6px 28px rgba(0,0,0,0.28);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.game-thumb-large {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.game-thumb-large img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 28px;
+    padding: 6px;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,255,255,0.15);
+    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.45));
+    transition: 0.25s;
+}
+
+.game-thumb-large img:hover {
+    transform: scale(1.03);
+    filter: drop-shadow(0 16px 35px rgba(0,0,0,0.55));
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.description {
+    line-height: 1.6;
+    font-size: 18px;
+    text-align: center;
+    opacity: 0.95;
+}
+
+/* Galeri */
+.gallery {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;   /* galeriyi ortalıyoruz */
+    flex-wrap: wrap;           /* alt satıra geçebilir */
+    gap: 14px;
+    padding: 10px 0;
+}
+
+.gallery img {
+    height: 140px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+}
+
+/* Store Butonları */
+.store-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+}
+.store-btn {
+    padding: 12px 22px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+}
+.store-btn.android { background: #3ddc84; }
+.store-btn.ios { background: #007aff; }
+.store-btn.blog-btn { background: #ff9f43; }
+.store-btn.steam { background: #00b7ff; }
+/* Back Button */
+.back-btn {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    color: #ffffff;
+    opacity: 0.7;
+}
+.back-btn:hover { opacity: 1; }
+
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+}
+
+.lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 16px;
+    box-shadow: 0 0 35px rgba(0,0,0,0.6);
+    animation: fadeIn 0.25s ease;
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    z-index: 1000000;
+    font-weight: bold;
+    text-shadow: 0 0 10px black;
+}
+.lang-menu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.lang-icon {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text, #fff);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.lang-icon i {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  background: none !important;
+  color: inherit;
+}
+
+.lang-icon:hover {
+  transform: scale(1.1);
+  color: var(--accent, #5d7bff);
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: 140%;
+  right: 0;
+  background: rgba(0,0,0,0.75);
+  border-radius: 10px;
+  padding: 6px 0;
+  display: none;
+  flex-direction: column;
+  min-width: 120px;
+  backdrop-filter: blur(10px);
+}
+
+.lang-dropdown button {
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.lang-dropdown button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.lang-menu.open .lang-dropdown {
+  display: flex;
+}
+
+.top-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Geri Butonu (aynı kalsın, daha küçük) */
+.back-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+
+/* Menü açıldığında */
+.detail-lang-menu.open .detail-lang-dropdown {
+  display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+/* Mobilde taşmayı engelle */
+@media (max-width: 480px) {
+    .details-wrapper {
+        padding: 18px;
+        margin: 20px auto;
+        width: calc(100% - 24px);
+        border-radius: 16px;
+    }
+
+    .gallery img {
+        height: 110px;
+    }
+.store-buttons {
+        gap: 8px;                 /* boşluk küçülür */
+        margin: 22px 0;           /* üst-alt alan daralır */
+    }
+
+    .store-btn {
+        padding: 8px 14px;        /* buton küçülür */
+        font-size: 13px;          /* yazı küçülür */
+        border-radius: 10px;      /* daha kompakt görünür */
+    }
+}
+
+
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FT4BZF0FBN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FT4BZF0FBN');
+</script>
+</head>
+
+<body>
+
+<div class="details-wrapper">
+<div class="lang-menu">
+    <button class="lang-icon" aria-label="Change language">
+        <i class="fa-solid fa-language"></i>
+    </button>
+
+    <div class="lang-dropdown">
+        <button data-lang="en">English</button>
+        <button data-lang="tr">Türkçe</button>
+    </div>
+</div>
+   <div class="game-thumb-large">
+        <img src="../images/RingPuzzle.png" alt="Ring Puzzle">
+    </div>
+
+    <h1 data-en="Ring Puzzle" data-tr="Ring Puzzle">Ring Puzzle</h1>
+
+    <p class="description"
+       data-en="Ring Puzzle is a minimalist yet challenging puzzle game that tests your logic and focus by rotating interlocking rings."
+       data-tr="Ring Puzzle, birbirine kenetlenen halkaları döndürerek mantığınızı ve odaklanmanızı test eden, sade ama zorlu bir bulmaca oyunudur.">
+       Ring Puzzle is a minimalist yet challenging puzzle game that tests your logic and focus by rotating interlocking rings.
+    </p>
+
+    
+        <div class="gallery">
+            
+                <img src="images/RingPuzzle1.png" alt="Ring Puzzle screenshot">
+            
+                <img src="images/RingPuzzle2.png" alt="Ring Puzzle screenshot">
+            
+                <img src="images/RingPuzzle3.png" alt="Ring Puzzle screenshot">
+            
+                <img src="images/RingPuzzle4.png" alt="Ring Puzzle screenshot">
+            
+                <img src="images/RingPuzzle5.png" alt="Ring Puzzle screenshot">
+            
+                <img src="images/RingPuzzle6.png" alt="Ring Puzzle screenshot">
+            
+                <img src="images/RingPuzzle7.png" alt="Ring Puzzle screenshot">
+            
+                <img src="images/RingPuzzle8.png" alt="Ring Puzzle screenshot">
+            
+                <img src="images/RingPuzzle9.png" alt="Ring Puzzle screenshot">
+            
+        </div>
+
+        <div class="store-buttons">
+
+            <a href="https://play.google.com/store/apps/details?id=com.ExpCrow.RingPuzzle" target="_blank" class="store-btn android">Android</a>
+
+            <!--
+
+    <a id="blogBtn" class="store-btn blog-btn">Blog</a>
+                -->
+        </div>
+
+<div class="top-buttons">
+    <a href="../index.html" class="back-btn">Back</a>
+</div>
+</div>
+
+<script src="../js/script.js"></script>
+<div class="lightbox-overlay" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">×</span>
+    <img id="lightboxImage" src="">
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ======================================================
+       🔥 1) DİL MENÜSÜ
+    ====================================================== */
+    const menu = document.querySelector(".detail-lang-menu");
+    const icon = document.querySelector(".detail-lang-icon");
+    const options = document.querySelectorAll(".detail-lang-dropdown button");
+
+    if (icon && menu) {
+        // Menü aç/kapa
+        icon.addEventListener("click", (e) => {
+            e.stopPropagation();
+            menu.classList.toggle("open");
+        });
+
+        document.addEventListener("click", () => {
+            menu.classList.remove("open");
+        });
+
+        // Dil seçimi
+        options.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const lang = btn.dataset.lang;
+                localStorage.setItem("lang", lang);
+                applyTranslations(lang);  
+                menu.classList.remove("open");
+            });
+        });
+
+        // Başlangıç dili
+        const savedLang = localStorage.getItem("lang") || "en";
+        applyTranslations(savedLang);
+    }
+
+
+    /* ======================================================
+       🔥 2) LIGHTBOX
+    ====================================================== */
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImage");
+    const closeBtn = document.getElementById("lightboxClose");
+    const galleryImages = document.querySelectorAll(".gallery img");
+
+    if (lightbox && galleryImages.length > 0) {
+
+        galleryImages.forEach(img => {
+            img.addEventListener("click", () => {
+                lightbox.style.display = "flex";
+                lightboxImg.src = img.src;
+            });
+        });
+
+        if (closeBtn) {
+            closeBtn.addEventListener("click", () => {
+                lightbox.style.display = "none";
+            });
+        }
+
+        lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = "none";
+            }
+        });
+    }
+
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const blogBtn = document.getElementById("blogBtn");
+
+    if (blogBtn) {
+        blogBtn.addEventListener("click", () => {
+            const lang = localStorage.getItem("lang") || "en";
+
+            if (lang === "tr") {
+                window.location.href = "./tr/blog/index.html";
+            } else {
+                window.location.href = "./en/blog/index.html";
+            }
+        });
+    }
+});
+
+</script>
+
+  <footer class="site-footer">
+  <div class="container footer-inner">
+    
+       <span>© <span id="year"></span> 
+      <a href="/index.html" class="footer-brand">ExpCrow Game Studio</a>. 
+      All rights reserved.
+    </span>
+
+    <div class="footer-links">
+      <a href="/PrivacyPolicy.html" data-tr="Gizlilik Politikası" data-en="Privacy Policy">Privacy Policy</a>
+      <a href="/app-ads.txt">app-ads.txt</a>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

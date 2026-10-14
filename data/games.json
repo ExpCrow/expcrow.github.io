@@ -4,10 +4,21 @@
         "slug": "WordSagaCrossword",
         "ios": "https://apps.apple.com/us/app/wordsaga-crossword/id6752307796",
         "android": "https://play.google.com/store/apps/details?id=com.ExpCrow.WordSagaCrossWord",
- 	"steam": "",
+        "steam": "",
         "description": {
             "en": "Relax your mind and challenge your vocabulary! Solve crossword puzzles, decorate rooms, and uncover the story of WordSaga.",
             "tr": "Zihnini dinlendir, kelime dağarcığını zorla! Bulmacaları çöz, odanı dekore et ve WordSaga hikayesini keşfet."
+        }
+    },
+    {
+        "name": "Ring Puzzle",
+        "slug": "RingPuzzle",
+        "ios": "",
+        "android": "https://play.google.com/store/apps/details?id=com.ExpCrow.RingPuzzle",
+        "steam": "",
+        "description": {
+            "en": "Ring Puzzle is a minimalist yet challenging puzzle game that tests your logic and focus by rotating interlocking rings.",
+            "tr": "Ring Puzzle, birbirine kenetlenen halkaları döndürerek mantığınızı ve odaklanmanızı test eden, sade ama zorlu bir bulmaca oyunudur."
         }
     }
 ]

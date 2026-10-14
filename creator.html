@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Tracking Link</title>
+
+    <link rel="stylesheet" href="css/style.css?v=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+            <div class="logo-frame">
+                <img src="images/Logo.png" alt="ExpCrow logo" class="site-logo">
+            </div>
+
+            <nav class="header-nav">
+                <a href="/index.html">Home</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="games">
+
+            <div class="container">
+
+                <h2>Create Your Install Link</h2>
+
+                <div style="max-width:500px;margin:auto">
+
+
+                    <label>Game</label>
+                    <select id="gameSelect"></select>
+
+
+                    <label>Platform</label>
+                    <select id="platformSelect">
+                        <option value="android">Android</option>
+                        <option value="ios">iOS</option>
+                    </select>
+
+
+                    <label>Username</label>
+                    <input type="text" id="username" placeholder="username">
+
+
+                    <button class="button primary" onclick="generateLink()" style="margin-top:15px;">
+                        Generate Link
+                    </button>
+
+
+                    <div id="result" style="margin-top:20px;font-weight:bold"></div>
+
+
+                    <button id="copyBtn"
+                            class="button primary"
+                            style="display:none;margin-top:10px;">
+                        Copy Link
+                    </button>
+
+
+                    <div id="copyMsg" style="color:green;margin-top:8px;"></div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        let games = [];
+        let generatedLink = "";
+
+
+        /* games.json yükle */
+
+        fetch("/data/games.json")
+
+        .then(res => res.json())
+
+        .then(data => {
+
+        games = data;
+
+        const select = document.getElementById("gameSelect");
+
+        games.forEach((game,index)=>{
+
+        const opt = document.createElement("option");
+
+        opt.value = index;
+
+        opt.textContent = game.name;
+
+        select.appendChild(opt);
+
+        });
+
+        });
+
+
+        /* link oluþtur */
+
+        function generateLink(){
+
+        const gameIndex = document.getElementById("gameSelect").value;
+
+        const platform = document.getElementById("platformSelect").value;
+
+        const username = document.getElementById("username").value.trim();
+
+        if(username === ""){
+
+        alert("Please enter username");
+
+        return;
+
+        }
+
+        const game = games[gameIndex];
+
+        const slug = game.slug;
+
+
+        /* oluþturulan tracking link */
+
+        generatedLink =
+        "https://www.expcrow.com/r/"+slug+"/"+platform+"/"+username;
+
+
+        document.getElementById("result").innerHTML =
+        "Your Link:<br>"+generatedLink;
+
+
+        document.getElementById("copyBtn").style.display = "inline-block";
+
+
+        document.getElementById("copyMsg").innerText = "";
+
+        }
+
+
+        /* copy */
+
+        document.getElementById("copyBtn").addEventListener("click",function(){
+
+        navigator.clipboard.writeText(generatedLink);
+
+        document.getElementById("copyMsg").innerText = "Copied!";
+
+        setTimeout(()=>{
+
+        document.getElementById("copyMsg").innerText="";
+
+        },2000);
+
+        });
+
+
+    </script>
+
+
+</body>
+</html>
